@@ -1,23 +1,124 @@
-# ms-text-editor
+# Microsoft Word Editor – Design Architecture
 
-This project uses [Gradle](https://gradle.org/).
-To build and run the application, use the *Gradle* tool window by clicking the Gradle icon in the right-hand toolbar,
-or run it directly from the terminal:
+This repository presents a **design architecture for building a Microsoft Word–like document editor**.
+It focuses on **structuring the core components, responsibilities, and interaction patterns** required to implement a scalable text editing system.
 
-* Run `./gradlew run` to build and run the application.
-* Run `./gradlew build` to only build the application.
-* Run `./gradlew check` to run all checks, including tests.
-* Run `./gradlew clean` to clean all build outputs.
+The goal of this project is to demonstrate **software design thinking and architectural structuring**, rather than a full implementation.
 
-Note the usage of the Gradle Wrapper (`./gradlew`).
-This is the suggested way to use Gradle in production projects.
+---
 
-[Learn more about the Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html).
+## Overview
 
-[Learn more about Gradle tasks](https://docs.gradle.org/current/userguide/command_line_interface.html#common_tasks).
+A word processor appears simple on the surface but internally requires a well-structured architecture to support features like:
 
-This project follows the suggested multi-module setup and consists of the `app` and `utils` subprojects.
-The shared build logic was extracted to a convention plugin located in `buildSrc`.
+* Text editing
+* Formatting
+* Undo / redo
+* Document state management
+* Cursor positioning
+* Rendering logic
 
-This project uses a version catalog (see `gradle/libs.versions.toml`) to declare and version dependencies
-and both a build cache and a configuration cache (see `gradle.properties`).
+This project proposes a **modular design pattern** that separates concerns between editing logic, document state, and rendering.
+
+---
+
+## Core Design Components
+
+### Document Model
+
+Represents the structure of the document.
+
+Responsibilities:
+
+* Maintain document content
+* Store formatting metadata
+* Track document state
+
+---
+
+### Editor Controller
+
+Acts as the central coordinator.
+
+Responsibilities:
+
+* Handle user actions
+* Trigger document updates
+* Coordinate between UI and document model
+
+---
+
+### Command System
+
+Encapsulates editing operations using a command pattern.
+
+Examples:
+
+* Insert text
+* Delete text
+* Apply formatting
+* Undo / redo operations
+
+Benefits:
+
+* Clean separation of editing actions
+* Enables undo/redo functionality
+
+---
+
+### Rendering Layer
+
+Responsible for displaying the document.
+
+Responsibilities:
+
+* Render document state
+* Update UI when document changes
+* Maintain cursor and selection state
+
+---
+
+## Design Goals
+
+The architecture focuses on:
+
+* **Separation of concerns**
+* **Scalability**
+* **Maintainability**
+* **Extensibility**
+
+This structure allows additional features such as:
+
+* collaborative editing
+* plugin support
+* advanced formatting tools
+
+---
+
+## Possible Extensions
+
+Future implementations could include:
+
+* Real-time collaborative editing
+* Plugin architecture
+* Version history
+* Export formats (PDF, DOCX)
+
+---
+
+## Learning Objective
+
+This project demonstrates:
+
+* software architecture thinking
+* modular system design
+* editor system modeling
+* applying design patterns to real-world applications
+
+---
+
+## Author
+
+Abdullah Zaidan
+Software Engineer – Samsung Electronics
+GitHub: https://github.com/zaidanabdullah002
